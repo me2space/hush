@@ -1,11 +1,11 @@
 # Installing Hush
 
 ## Linux Install with Windows via VirtualBox
-VirtualBox 5.2.8 (released February 27 2018)
-https://www.virtualbox.org/wiki/Download_Old_Builds_5_2
+VirtualBox 5.2.12
+https://www.virtualbox.org/wiki/Downloads
 
 Or click below for direct download
-https://download.virtualbox.org/virtualbox/5.2.8/VirtualBox-5.2.8-121009-Win.exe
+https://download.virtualbox.org/virtualbox/5.2.12/VirtualBox-5.2.12-122591-Win.exe
 
 Ubuntu Install
 Download Ubuntu 16.04.4 LTS (Xenial Xerus) from your favorite mirror, or find it below.
@@ -14,7 +14,7 @@ http://www.gtlib.gatech.edu/pub/ubuntu-releases/xenial/
 Or click below for direct download
 http://www.gtlib.gatech.edu/pub/ubuntu-releases/xenial/ubuntu-16.04.4-desktop-amd64.iso
 
-Set up VirtualBox to install from Ubuntu ISO, 4 Gigs of RAM and 20 GB of storage will work.  
+Set up VirtualBox to install from Ubuntu ISO, 4 Gigs of RAM and 20 GB of storage will work great.  For a minimal setup I have also had success with a 2GB RAM and 15GB of storage.  VirtualBox typically will add an equal amount of swap automatically to give you the 4GB RAM that is needed.
 
 ---
 
@@ -85,7 +85,8 @@ sudo dpkg -i hush-1.0.13-afad8af-amd64.deb
 
 ## Download proving key
 ```sh
-./zcutil/fetch-params.sh
+cd ~
+../../usr/bin/./hush-fetch-params
 ```
 
 ## Create a HUSH configuration file (*important*):
@@ -101,8 +102,13 @@ echo "addnode=dnsseed.hush.quebec" >> ~/.hush/hush.conf
 ```
 
 ## Run a HUSH Node
+It can take over 8 hours to fully sync.
 ```ssh
-./hushd
+hushd -daemon
+```
+Hush will run in the background.  You can verify it’s syncing by checking the block count and making sure that it’s quickly increasing.  Run the following command twice successively.
+```ssh
+hush-cli get info
 ```
 
 ## Windows (cross-compiled on Linux)
