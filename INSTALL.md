@@ -108,7 +108,7 @@ hushd -daemon
 ```
 Hush will run in the background.  You can verify it’s syncing by checking the block count and making sure that it’s quickly increasing.  Run the following command twice successively.
 ```ssh
-hush-cli get info
+hush-cli getinfo
 ```
 
 ## Windows (cross-compiled on Linux)
